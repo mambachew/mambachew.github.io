@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Meseret E. Ambachew — Research, Analytics & Reporting</title>
+<meta name="description" content="Portfolio of Meseret E. Ambachew: statistical modeling, data visualization, and reporting on how messages move audiences.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F2F3E9;
+    --card:#FBFCF6;
+    --ink:#1E2A1B;
+    --ink-soft:#55634C80;
+    --muted:#55634C;
+    --rule:#D5DCC4;
+    --blue:#3F5A2E;      /* deep earth green — headings, links */
+    --signal:#5C7634;    /* matcha — labels, eyebrows, accents */
+    --matcha-light:#A8C273;
+    --measure:74ch;
+    --display:"Newsreader",Georgia,serif;
+    --body:"Public Sans",system-ui,-apple-system,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,monospace;
+  }
+
+  *,*::before,*::after{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--body);
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{color:var(--blue);text-underline-offset:3px;text-decoration-thickness:1px;}
+  a:focus-visible{outline:2px solid var(--signal);outline-offset:3px;border-radius:2px;}
+
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px;}
+
+  /* ---------- eyebrow / mono utility ---------- */
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:11.5px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--signal);
+    margin:0;
+  }
+
+  /* ---------- masthead ---------- */
+  .masthead{
+    border-bottom:1px solid var(--rule);
+    padding:22px 0 18px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px 28px;
+    align-items:baseline;
+    justify-content:space-between;
+  }
+  .masthead .name{
+    font-family:var(--mono);
+    font-size:12.5px;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    font-weight:500;
+    margin:0;
+  }
+  .masthead nav{display:flex;flex-wrap:wrap;gap:20px;}
+  .masthead nav a{
+    font-family:var(--mono);
+    font-size:12.5px;
+    letter-spacing:.06em;
+    text-decoration:none;
+    color:var(--muted);
+  }
+  .masthead nav a:hover{color:var(--ink);text-decoration:underline;}
+
+  /* ---------- hero ---------- */
+  .hero{padding:76px 0 64px;border-bottom:1px solid var(--rule);}
+  .hero h1{
+    font-family:var(--display);
+    font-optical-sizing:auto;
+    font-weight:400;
+    font-size:clamp(2.5rem,6.4vw,4.6rem);
+    line-height:1.04;
+    letter-spacing:-.02em;
+    margin:20px 0 0;
+    max-width:19ch;
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--blue);
+    background-image:linear-gradient(transparent 64%,var(--matcha-light) 64%,var(--matcha-light) 94%,transparent 94%);
+    padding:0 .06em;
+  }
+  .hero .standfirst{
+    margin:30px 0 0;
+    max-width:60ch;
+    font-size:1.09rem;
+    color:var(--muted);
+  }
+  .hero .standfirst strong{color:var(--ink);font-weight:600;}
+
+  /* ---------- section headers ---------- */
+  .section{padding:64px 0;border-bottom:1px solid var(--rule);}
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    gap:16px;
+    margin-bottom:8px;
+  }
+  .section-head .count{
+    font-family:var(--mono);
+    font-size:11.5px;
+    color:var(--ink-soft);
+    letter-spacing:.08em;
+  }
+  .section-intro{
+    margin:14px 0 0;
+    max-width:62ch;
+    color:var(--muted);
+  }
+
+  /* ---------- project record (signature element) ---------- */
+  .record{
+    border-top:1px solid var(--rule);
+    padding:38px 0 34px;
+    display:grid;
+    grid-template-columns:130px minmax(0,1fr);
+    gap:6px 34px;
+  }
+  .record:first-of-type{margin-top:34px;}
+
+  .record-meta{
+    font-family:var(--mono);
+    font-size:11px;
+    line-height:1.75;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--muted);
+    grid-column:1;
+    grid-row:1 / span 2;
+  }
+  .record-meta span{display:block;}
+  .record-meta .tag{color:var(--signal);}
+
+  .record-body{grid-column:2;}
+  .record h3{
+    font-family:var(--display);
+    font-weight:500;
+    font-size:clamp(1.5rem,2.7vw,2.05rem);
+    line-height:1.16;
+    letter-spacing:-.012em;
+    margin:0 0 18px;
+    max-width:26ch;
+  }
+  .record h3 a{color:var(--ink);text-decoration:none;background-image:linear-gradient(var(--blue),var(--blue));background-size:0 1px;background-repeat:no-repeat;background-position:0 100%;transition:background-size .3s ease;}
+  .record h3 a:hover{background-size:100% 1px;color:var(--blue);}
+
+  /* codebook-style field list */
+  .fields{margin:0;}
+  .fields div{
+    display:grid;
+    grid-template-columns:88px minmax(0,1fr);
+    gap:4px 18px;
+    padding:7px 0;
+    border-top:1px dotted var(--rule);
+  }
+  .fields div:first-child{border-top:none;padding-top:0;}
+  .fields dt{
+    font-family:var(--mono);
+    font-size:10.5px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--signal);
+    padding-top:4px;
+  }
+  .fields dd{margin:0;max-width:var(--measure);}
+
+  /* link chips */
+  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;}
+  .chip{
+    font-family:var(--mono);
+    font-size:11.5px;
+    letter-spacing:.07em;
+    text-transform:uppercase;
+    text-decoration:none;
+    color:var(--ink);
+    border:1px solid var(--rule);
+    background:var(--card);
+    padding:8px 14px;
+    transition:border-color .18s ease,color .18s ease,transform .18s ease;
+  }
+  .chip:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-1px);}
+  .chip::after{content:" \2197";color:var(--ink-soft);}
+  .chip:hover::after{color:var(--blue);}
+
+  /* placeholder styling — delete these blocks once filled in */
+  .record.template{opacity:.85;}
+  .record.template .record-body{
+    border-left:2px dashed var(--signal);
+    padding-left:20px;
+    margin-left:-22px;
+  }
+  .todo{
+    color:var(--signal);
+    border-bottom:1px dotted var(--signal);
+    font-style:italic;
+  }
+
+  /* ---------- writing list ---------- */
+  .clips{list-style:none;margin:34px 0 0;padding:0;}
+  .clips li{
+    border-top:1px solid var(--rule);
+    padding:20px 0;
+    display:grid;
+    grid-template-columns:130px minmax(0,1fr);
+    gap:6px 34px;
+  }
+  .clips .clip-meta{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--muted);
+  }
+  .clips p{margin:6px 0 0;color:var(--muted);max-width:var(--measure);}
+  .clips h3{
+    font-family:var(--display);
+    font-weight:500;
+    font-size:1.2rem;
+    margin:0;
+    line-height:1.3;
+  }
+
+  /* ---------- about + footer ---------- */
+  .about-grid{display:grid;grid-template-columns:130px minmax(0,1fr);gap:6px 34px;margin-top:34px;}
+  .about-grid p{margin:0 0 16px;max-width:var(--measure);}
+  .about-grid p:last-child{margin-bottom:0;}
+
+  footer{padding:46px 0 60px;}
+  footer .contact{display:flex;flex-wrap:wrap;gap:12px 26px;margin-top:14px;}
+  footer .contact a{font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;}
+  footer .colophon{
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--ink-soft);
+    letter-spacing:.06em;
+    margin-top:38px;
+  }
+
+  /* ---------- motion ---------- */
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease;}
+  .reveal.in{opacity:1;transform:none;}
+
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important;}
+    .reveal{opacity:1;transform:none;}
+  }
+
+  @media (max-width:720px){
+    body{font-size:16px;}
+    .wrap{padding:0 20px;}
+    .hero{padding:52px 0 44px;}
+    .section{padding:48px 0;}
+    .record,.clips li,.about-grid{grid-template-columns:1fr;}
+    .record-meta{grid-column:1;grid-row:auto;margin-bottom:14px;}
+    .record-body{grid-column:1;}
+    .record.template .record-body{margin-left:0;}
+    .fields div{grid-template-columns:1fr;gap:2px;}
+    .fields dt{padding-top:0;}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- ============ MASTHEAD ============ -->
+  <header class="masthead">
+    <p class="name">Meseret E. Ambachew</p>
+    <nav>
+      <a href="#work">Work</a>
+      <a href="#writing">Writing</a>
+      <a href="#about">About</a>
+      <a href="https://github.com/mambachew">GitHub</a>
+      <a href="https://public.tableau.com/app/profile/meseret.ambachew">Tableau</a>
+      <a href="https://www.linkedin.com/in/mesereteambachew/">LinkedIn</a>
+    </nav>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <p class="eyebrow">Data journalism &middot; Analysis &middot; Visual storytelling</p>
+    <h1>I find the story in the data, and <em>build the visuals that carry it.</em></h1>
+    <p class="standfirst">
+      Reporter and quantitative analyst. I covered advertising technology, programmatic media, and measurement as a
+      bylined reporter at <strong>Adweek</strong>, and I hold an <strong>M.S. in Applied Quantitative Methods and Social
+      Analysis</strong>. I do my own analysis, in Stata, R, and Python, and make my own charts, in Tableau, ggplot2, and
+      Canva. Every project below started with a question, not with a dataset someone handed me.
+    </p>
+  </section>
+
+  <!-- ============ SELECTED WORK ============ -->
+  <section class="section" id="work">
+    <div class="section-head">
+      <p class="eyebrow">Selected work</p>
+    </div>
+    <p class="section-intro">
+      Each project starts with the question it set out to answer, then the data, the method, and what it found. Findings are stated plainly, including where the data cannot settle the question.
+    </p>
+
+    <article class="record reveal">
+      <div class="record-meta">
+        <span class="tag">Analysis</span>
+        <span>Stata</span>
+        <span>Logistic regression</span>
+        <span>Graduate project</span>
+      </div>
+      <div class="record-body">
+        <h3><a href="https://mambachew.github.io/college-confidence-analysis.pdf">Who Believes College Is Within Reach</a></h3>
+        <dl class="fields">
+          <div>
+            <dt>Question</dt>
+            <dd>What shapes whether an eighth grader believes they have a real chance of going to college, and which gaps survive once effort and friend group are accounted for?</dd>
+          </div>
+          <div>
+            <dt>Data</dt>
+            <dd>The National Institute of Justice evaluation of the GREAT program (ICPSR 3337), a survey of 5,935 eighth graders across 42 schools in 11 US cities, analyzed on a complete-case sample of 5,677.</dd>
+          </div>
+          <div>
+            <dt>Method</dt>
+            <dd>Binary logistic regression in Stata. Built composite measures of school engagement and peer academic environment from six survey items, controlling for sex, race, and age. Tested the proportional odds assumption first and moved to a binary logit when it failed. Reported odds ratios, average marginal effects, and predicted probabilities, with model fit checked by likelihood ratio test and Hosmer&ndash;Lemeshow, and collinearity checked by VIF.</dd>
+          </div>
+          <div>
+            <dt>Finding</dt>
+            <dd>School engagement mattered most: a one-point increase nearly tripled the odds a student expected to reach college. Friend group mattered nearly as visibly, with predicted confidence rising from 63% among students whose friends were largely disengaged to 88% among those whose friends were all academically involved. Two gaps survived every control. Hispanic students had 44% lower odds than white students, and each additional year of age cut the odds by 19%, a pattern consistent with the lasting cost of grade retention.</dd>
+          </div>
+        </dl>
+        <div class="chips">
+          <a class="chip" href="https://mambachew.github.io/college-confidence-analysis.pdf">Read the paper</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="record reveal">
+      <div class="record-meta">
+        <span class="tag">Analysis + visualization</span>
+        <span>R</span>
+        <span>Tableau</span>
+        <span>Graduate final project</span>
+      </div>
+      <div class="record-body">
+        <h3><a href="https://public.tableau.com/shared/GS4YK622Q?:display_count=n&amp;:origin=viz_share_link">Inc. 5000: What Drives High-Growth Companies</a></h3>
+        <dl class="fields">
+          <div>
+            <dt>Question</dt>
+            <dd>What do industry, geography, revenue, employee count, and repeat appearances tell us about how the fastest-growing private companies in the US actually scale?</dd>
+          </div>
+          <div>
+            <dt>Data</dt>
+            <dd>The 2014 Inc. 5000 list: 5,000 private companies with four-year revenue growth, latest revenue, employee count, industry, city, state, metro area, and number of years on the list.</dd>
+          </div>
+          <div>
+            <dt>Method</dt>
+            <dd>Cleaned and inspected the data in R, auditing every column for missing values and dropping empty fields. Built summary statistics for growth and revenue by industry and by metro area, then flagged extreme performers using z-scores on both growth and revenue. Charted average revenue by industry, growth against revenue, growth by employee size band, and growth by repeat appearances in ggplot2, and carried the results into an eight-point interactive Tableau Story.</dd>
+          </div>
+          <div>
+            <dt>Finding</dt>
+            <dd><span class="todo">Pick the one result you would lead with. Which industry or metro stood out, or what the growth-versus-revenue relationship turned out to be.</span></dd>
+          </div>
+        </dl>
+        <div class="chips">
+          <a class="chip" href="https://public.tableau.com/shared/GS4YK622Q?:display_count=n&amp;:origin=viz_share_link">Open Tableau story</a>
+        
+        </div>
+      </div>
+    </article>
+
+    <article class="record reveal">
+      <div class="record-meta">
+        <span class="tag">Modeling</span>
+        <span>R</span>
+        <span>NLP</span>
+        <span>Graduate project</span>
+      </div>
+      <div class="record-body">
+        <h3><a href="https://github.com/mambachew/Fake-News-Projecct">Fake News Detection Predictive Model</a></h3>
+        <dl class="fields">
+          <div>
+            <dt>Question</dt>
+            <dd>Can the text of an article alone distinguish authentic reporting from fabricated news?</dd>
+          </div>
+          <div>
+            <dt>Data</dt>
+            <dd>A labeled corpus of real and fabricated news articles.</dd>
+          </div>
+          <div>
+            <dt>Method</dt>
+            <dd>Text cleaning, null handling, feature engineering, and categorical encoding, then a bake-off across five classifiers: logistic regression, k-nearest neighbors, decision trees, random forests, and naive Bayes. Evaluated with accuracy, confusion matrices, and cross-validation.</dd>
+          </div>
+          <div>
+            <dt>Finding</dt>
+            <dd>No single classifier was good enough on its own. Stacking the five into an ensemble with XGBoost as the meta-learner reached 90.25% accuracy on the validation set, and the gains came as much from feature selection and encoding strategy as from the choice of algorithm.</dd>
+          </div>
+        </dl>
+        <div class="chips">
+          <a class="chip" href="https://github.com/mambachew/Fake-News-Projecct">Code on GitHub</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="record reveal">
+      <div class="record-meta">
+        <span class="tag">Visualization</span>
+        <span>R</span>
+        <span>Tableau</span>
+        <span>Graduate project</span>
+      </div>
+      <div class="record-body">
+        <h3><a href="https://public.tableau.com/views/INSH5302_DataVisualizationProject2/DataVizProject2?:language=en-US&amp;:sid=&amp;:redirect=auth&amp;:display_count=n&amp;:origin=viz_share_link">The Great British Bake Off Analytics Dashboard</a></h3>
+        <dl class="fields">
+          <div>
+            <dt>Question</dt>
+            <dd>What patterns in contestant performance show up across seasons, and which ones actually predict who stays?</dd>
+          </div>
+          <div>
+            <dt>Data</dt>
+            <dd>Contestant, episode, and challenge results across every season, cleaned and reshaped from a raw, inconsistent source.</dd>
+          </div>
+          <div>
+            <dt>Method</dt>
+            <dd>Data cleaning and exploratory analysis in R, then an interactive Tableau dashboard covering star baker wins, elimination patterns, and technical challenge difficulty.</dd>
+          </div>
+          <div>
+            <dt>Finding</dt>
+            <dd><span class="todo">Add the single most interesting thing the dashboard revealed. One sentence, plain language.</span></dd>
+          </div>
+        </dl>
+        <div class="chips">
+          <a class="chip" href="https://public.tableau.com/views/INSH5302_DataVisualizationProject2/DataVizProject2?:language=en-US&amp;:sid=&amp;:redirect=auth&amp;:display_count=n&amp;:origin=viz_share_link">Open dashboard</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="record reveal">
+      <div class="record-meta">
+        <span class="tag">Visualization</span>
+        <span>R</span>
+        <span>Tableau</span>
+        <span>Canva</span>
+      </div>
+      <div class="record-body">
+        <h3><a href="https://public.tableau.com/views/INSH5302_Homework6Story/Story1?:language=en-US&amp;:sid=&amp;:redirect=auth&amp;:display_count=n&amp;:origin=viz_share_link">Boston Airbnb Pricing by Neighborhood and Property Type</a></h3>
+        <dl class="fields">
+          <div>
+            <dt>Question</dt>
+            <dd>How does Airbnb pricing vary across Boston neighborhoods, and does property type or location explain more of the difference?</dd>
+          </div>
+          <div>
+            <dt>Data</dt>
+            <dd>Just under 3,000 Boston Airbnb listings with price, neighborhood, property type, capacity, bedrooms, and review frequency.</dd>
+          </div>
+          <div>
+            <dt>Method</dt>
+            <dd>Cleaned the listings in R and dropped incomplete records, then built a hierarchical treemap of price nested by property type and neighborhood, plus an interactive D3 version. Narrowed the set to eight neighborhoods and filtered out sparse categories to produce the presentation layer in Tableau and Canva.</dd>
+          </div>
+          <div>
+            <dt>Finding</dt>
+            <dd><span class="todo">Which neighborhoods and property types commanded the highest prices, and anything that surprised you.</span></dd>
+          </div>
+        </dl>
+        <div class="chips">
+          <a class="chip" href="https://public.tableau.com/views/INSH5302_Homework6Story/Story1?:language=en-US&amp;:sid=&amp;:redirect=auth&amp;:display_count=n&amp;:origin=viz_share_link">Open Tableau story</a>
+        
+        </div>
+      </div>
+    </article>
+
+    <article class="record reveal">
+      <div class="record-meta">
+        <span class="tag">Analysis + visualization</span>
+        <span>R</span>
+        <span>Canva</span>
+        <span>Graduate project</span>
+      </div>
+      <div class="record-body">
+        <h3><a href="https://canva.link/lcs6ygc0r1tstg8">Spotify Audio Features: Genre and Artist Comparison</a></h3>
+        <dl class="fields">
+          <div>
+            <dt>Question</dt>
+            <dd>Which playlist genres rank highest on speechiness, and how do audio characteristics differ between two very different major artists?</dd>
+          </div>
+          <div>
+            <dt>Data</dt>
+            <dd>The TidyTuesday Spotify songs dataset, covering track-level audio features including speechiness, danceability, and loudness, tagged by playlist genre and artist.</dd>
+          </div>
+          <div>
+            <dt>Method</dt>
+            <dd>Summary statistics of speechiness across genres in R, then a filtered comparison of Queen and Beyoncé, ending in a grouped bar chart of average loudness by genre designed into a Canva presentation.</dd>
+          </div>
+          <div>
+            <dt>Finding</dt>
+            <dd>Rap ranked highest on average speechiness and rock lowest. <span class="todo">Add what the Queen versus Beyoncé loudness comparison showed.</span></dd>
+          </div>
+        </dl>
+        <div class="chips">
+          <a class="chip" href="https://canva.link/lcs6ygc0r1tstg8">View in Canva</a>
+        
+        </div>
+      </div>
+    </article>
+
+    <article class="record reveal">
+      <div class="record-meta">
+        <span class="tag">Analysis</span>
+        <span>R</span>
+        <span>ggplot2</span>
+        <span>Graduate project</span>
+      </div>
+      <div class="record-body">
+        <h3><a href="https://canva.link/g2uf4llwdh4lxii">Coffee Quality, Origin, and Altitude</a></h3>
+        <dl class="fields">
+          <div>
+            <dt>Question</dt>
+            <dd>Which coffee-producing countries earn the highest quality ratings, and does growing altitude help explain the difference?</dd>
+          </div>
+          <div>
+            <dt>Data</dt>
+            <dd>The coffee ratings dataset, scoring samples out of 100 total cup points alongside country of origin and mean growing altitude.</dd>
+          </div>
+          <div>
+            <dt>Method</dt>
+            <dd>Summary statistics of total cup points grouped by country of origin in R, ranked by mean score. Narrowed to the five highest-rated origins, compared altitude distributions across them, and plotted altitude against quality score by country in ggplot2.</dd>
+          </div>
+          <div>
+            <dt>Finding</dt>
+            <dd>Papua New Guinea earned the highest average cup score, with Ethiopia second and Haiti lowest. <span class="todo">Add what the altitude comparison showed: did higher-grown coffee actually score better?</span></dd>
+          </div>
+        </dl>
+        <div class="chips">
+          <a class="chip" href="https://canva.link/g2uf4llwdh4lxii">View in Canva</a>
+        </div>
+      </div>
+    </article>
+
+</section>
+
+  <!-- ============ WRITING ============ -->
+  <section class="section" id="writing">
+    <div class="section-head">
+      <p class="eyebrow">Writing</p>
+    </div>
+    <p class="section-intro">
+      Bylined reporting on advertising technology, programmatic media, audience targeting, and the collapse of the
+      third-party cookie. Breaking news, trend stories, and investigative work filed on deadline, sourced from
+      executives at Google, Amazon, and The Trade Desk.
+    </p>
+
+    <ul class="clips">
+      <li>
+        <div class="clip-meta">
+          <span>Adweek</span><br>
+          <span>2021&ndash;2023</span>
+        </div>
+        <div>
+          <h3><a href="https://www.adweek.com/contributor/meseret-ambachew/">Ad tech reporting archive</a></h3>
+          <p>
+            Full archive of bylined coverage, including reporting on measurement and targeting, and the launch of
+            Adweek's dedicated podcast and audio advertising beat.
+          </p>
+        </div>
+      </li>
+      <!-- Optional: add two or three individual standout pieces here as their own <li>,
+           each with a headline, the outlet and year, and one line on what it covered. -->
+    </ul>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="section" id="about">
+    <div class="section-head">
+      <p class="eyebrow">About</p>
+    </div>
+    <div class="about-grid">
+      <div class="record-meta">
+        <span class="tag">Boston, MA</span>
+        <span>Python &middot; R</span>
+        <span>SQL &middot; Tableau</span>
+      </div>
+      <div>
+        <p>
+          My work has followed one line: investigate something complicated, find what actually matters in it, and make
+          that clear to other people. I started in media agencies measuring audience reach and campaign performance,
+          then spent my reporting years covering advertising technology for Adweek, where the subject was often
+          measurement itself and the job was explaining it on deadline.
+        </p>
+        <p>
+          I went deeper on the quantitative side with an M.S. in Applied Quantitative Methods and Social Analysis at
+          Northeastern, working in Stata, R, and Python across regression modeling, survey microdata, and machine
+          learning, alongside a graduate course in information design and visual analytics. Most recently I evaluated
+          AI tools in production use, diagnosing where their output broke down and why.
+        </p>
+        <p>
+          What I want to do is data journalism: original reporting that starts from a dataset and ends in something a
+          reader can see and understand.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <p class="eyebrow">Get in touch</p>
+    <div class="contact">
+      <a href="mailto:mambachew27@gmail.com">mambachew27@gmail.com</a>
+      <a href="https://www.linkedin.com/in/mesereteambachew/">LinkedIn</a>
+      <a href="https://github.com/mambachew">GitHub</a>
+      <a href="https://public.tableau.com/app/profile/meseret.ambachew">Tableau Public</a>
+      <a href="https://www.adweek.com/contributor/meseret-ambachew/">Adweek</a>
+    </div>
+    <p class="colophon">Meseret E. Ambachew &mdash; Research, analytics &amp; reporting</p>
+  </footer>
+
+</div>
+
+<script>
+  (function () {
+    var items = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) {
+      items.forEach(function (el) { el.classList.add('in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+    items.forEach(function (el) { io.observe(el); });
+  })();
+</script>
+
+</body>
+</html>
